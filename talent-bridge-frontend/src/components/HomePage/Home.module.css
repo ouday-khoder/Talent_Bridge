@@ -1,0 +1,39 @@
+.container .hometext {
+    font-weight: bold;
+    font-size: 3.75rem;
+    color: #1a202c;
+    letter-spacing: -0.5px;
+}
+
+.container .span1 {
+    color: #1A202C;
+}
+
+.container .span2 {
+    color: #ff4545;
+}
+
+.container .span3 {
+    font-size: 14px;
+    color: blue;
+}
+
+.container .span4 {
+    font-size: 3rem;
+    color: #0b4d90;
+}
+
+.container .span5 {
+    font-size: 14px;
+    color: blue;
+}
+
+.container .span6 {
+    font-size: 3rem;
+    color: #0b4d90;
+}
+
+.container .span7 {
+    font-size: 14px;
+    color: #000000;
+}
