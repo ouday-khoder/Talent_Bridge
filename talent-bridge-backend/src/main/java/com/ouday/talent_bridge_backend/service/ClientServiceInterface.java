@@ -8,5 +8,7 @@ public interface ClientServiceInterface {
 
     List<Client> findAll();
 
+    Client findById(int theId);
+
     Client save(Client theClient);
 }

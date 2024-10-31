@@ -20,6 +20,15 @@ public class ClientController {
         return clientServiceInterface.findAll();
     }
 
+    @GetMapping("/clients/{clientId}")
+    public Client getClientById(@PathVariable int clientId) {
+        Client theClient = clientServiceInterface.findById(clientId);
+
+        if(theClient == null) {
+            throw new RuntimeException("client id not found " + clientId);
+        }
+        return  theClient;
+    }
 
     @PostMapping("/clients")
     public Client addClient(@RequestBody Client theClient) {
