@@ -1,7 +1,16 @@
 import React from 'react';
 import { Box, Button, Grid, Typography, Card, CardContent, CardActions } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const SignupPage = React.forwardRef((props, ref) => {
+
+    const navigate = useNavigate();
+
+    const handleClientSignup = () => {
+        navigate('/signup/client');
+    }
+
+    
   return (
     <Box ref={ref} sx={{ textAlign: 'center', padding: '3rem 0', backgroundColor: '#e2e8f033', borderRadius: '50px'}}>
         <Typography variant="h3" gutterBottom>
@@ -15,7 +24,18 @@ const SignupPage = React.forwardRef((props, ref) => {
                 <Typography variant="body2">Hiring for a project</Typography>
                 </CardContent>
                 <CardActions>
-                <Button variant="contained" color="primary">Join as a Client</Button>
+                <Button onClick={handleClientSignup} variant="contained" color="primary">Join as a Client</Button>
+                </CardActions>
+            </Card>
+            </Grid>
+            <Grid item>
+            <Card>
+                <CardContent>
+                <Typography variant="h5">I'm a Freelancer</Typography>
+                <Typography variant="body2">Looking for work</Typography>
+                </CardContent>
+                <CardActions>
+                <Button variant="contained" color="primary">Join as a Freelancer</Button>
                 </CardActions>
             </Card>
             </Grid>

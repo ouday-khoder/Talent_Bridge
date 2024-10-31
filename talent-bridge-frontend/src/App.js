@@ -14,6 +14,7 @@ import Skills from './components/HomePage/Skills/Skills';
 import HomeText from './components/HomePage/HomeText/HomeText';
 import OurClient from './components/HomePage/OurClient/OurClient';
 import Footer from './components/Footer/Footer';
+import ClientSignUp from './components/ClientSignUp/ClientSignUp';
 
 
 function App() {
@@ -56,6 +57,8 @@ function App() {
             <Footer />
           </Container>
         } />
+
+        <Route path="/signup/client" element={<ClientSignUp />} />
 
       </Routes>
 
