@@ -1,6 +1,7 @@
 package com.ouday.talent_bridge_backend.rest;
 
 import com.ouday.talent_bridge_backend.entity.Client;
+import com.ouday.talent_bridge_backend.entity.Profile;
 import com.ouday.talent_bridge_backend.service.ClientServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -38,6 +39,31 @@ public class ClientController {
         Client dbClient = clientServiceInterface.save(theClient);
 
         return dbClient;
+    }
+
+    // post profile for client by id
+    @PostMapping("/clients/profile/{clientId}")
+    public Client ClientProfile(@PathVariable int clientId, @RequestBody Profile profile) {
+        Client client = clientServiceInterface.findById(clientId);
+
+        if (client == null) {
+            throw new RuntimeException("Client id not found - " + clientId);
+        }
+        // update client with profile information
+
+        client.setCountry(profile.getCountry());
+        client.setCity(profile.getCity());
+        client.setStreet(profile.getStreet());
+        client.setPostCode(profile.getPostCode());
+        client.setDateOfBirth(profile.getDateOfBirth());
+        client.setGender(profile.getGender());
+        client.setJobTitle(profile.getJobTitle());
+        client.setPhoneNumber(profile.getPhoneNumber());
+        client.setBio(profile.getBio());
+
+        clientServiceInterface.save(client);
+
+        return client;
     }
 
     @PutMapping("/clients")
