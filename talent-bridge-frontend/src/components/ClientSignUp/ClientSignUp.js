@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Box, TextField, Button, Typography } from '@mui/material';
+import axios from 'axios';
 
 const ClientSignUp = () => {
     const [formData, setFormData] = useState({
@@ -16,6 +17,16 @@ const ClientSignUp = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        axios.post("http://localhost:8080/api/clients", formData)
+        .then(response => {
+            console.log(response.data)
+            console.log("Client created successfully: ", response.data)
+        })
+        .catch(error => {
+            console.error(error);
+            console.error('There was an error creating the client!', error);
+        });
     };
 
     return (
