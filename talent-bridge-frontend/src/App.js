@@ -15,6 +15,7 @@ import HomeText from './components/HomePage/HomeText/HomeText';
 import OurClient from './components/HomePage/OurClient/OurClient';
 import Footer from './components/Footer/Footer';
 import ClientSignUp from './components/ClientSignUp/ClientSignUp';
+import ProfileForm from './components/SignUp/ProfileForm/ProfileForm';
 
 
 function App() {
@@ -59,6 +60,7 @@ function App() {
         } />
 
         <Route path="/signup/client" element={<ClientSignUp />} />
+        <Route path="/client/profile/:clientId" element={<ProfileForm />} />
 
       </Routes>
 

@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { Box, TextField, Button, Typography } from '@mui/material';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const ClientSignUp = () => {
+
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -22,6 +26,9 @@ const ClientSignUp = () => {
         .then(response => {
             console.log(response.data)
             console.log("Client created successfully: ", response.data)
+
+            // navigate to the clientForm
+            navigate(`/client/profile/${response.data.id}`);
         })
         .catch(error => {
             console.error(error);
