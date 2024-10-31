@@ -47,6 +47,22 @@ public class ClientController {
         return dbClient;
     }
 
+    @DeleteMapping("/clients/{clientId}")
+    public String deleteClientById(@PathVariable int clientId) {
+        Client tempClient = clientServiceInterface.findById(clientId);
 
+        if(tempClient == null) {
+            throw new RuntimeException("client id not found - " + clientId);
+        }
+        clientServiceInterface.deleteById(clientId);
+
+        return "deleted client id " + clientId;
+    }
+
+    @DeleteMapping("/clients")
+    public String deleteAllClients() {
+        clientServiceInterface.deleteAll();
+        return "All clients are deleted";
+    }
 
 }

@@ -11,4 +11,8 @@ public interface ClientServiceInterface {
     Client findById(int theId);
 
     Client save(Client theClient);
+
+    void deleteById(int theId);
+
+    void deleteAll();
 }
