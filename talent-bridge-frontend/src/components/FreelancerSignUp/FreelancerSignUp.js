@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Box, TextField, Button, Typography } from '@mui/material';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const FreelancerSignUp = () => {
     const [formData, setFormData] = useState({
@@ -9,6 +10,8 @@ const FreelancerSignUp = () => {
         email: '',
         password: '',
     });
+
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -22,6 +25,9 @@ const FreelancerSignUp = () => {
         .then(response => {
             console.log(response.data)
             console.log("Freelancer created successfully: ", response.data)
+
+            navigate(`/freelancer/profile/${response.data.id}`);
+            console.log(response.data.id);
         })
         .catch(error => {
             console.error(error);

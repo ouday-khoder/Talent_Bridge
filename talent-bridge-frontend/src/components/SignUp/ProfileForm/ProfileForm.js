@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
 import { Box } from '@mui/material';
 import ClientForm from './ClientForm/ClientForm';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import axios from 'axios';
+import FreelancerForm from './FreelancerForm/FreelancerForm';
 
 
 const ProfileForm = () => {
 
-    const {clientId} = useParams();
+    const {clientId, freelancerId} = useParams();
+    const location = useLocation();
+    const isFreelancer = location.pathname.includes('/freelancer');
 
     const [profile, setProfile] = useState({
         country: '', city: '', street: '', postCode: '', 
         dateOfBirth: '', gender: '', jobTitle: '', 
-        phoneNumber: '', bio: ''
+        phoneNumber: '', bio: '', hourlyRate: '',
     });
+
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -23,22 +27,40 @@ const ProfileForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const url = `http://localhost:8080/api/clients/profile/${clientId}`;
+        const userId = isFreelancer ? freelancerId : clientId;
+
+        const url = isFreelancer ? 
+        `http://localhost:8080/api/freelancers/profile/${userId}` : 
+        `http://localhost:8080/api/clients/profile/${userId}`;
 
         axios.post(url, profile)
         .then(response => {
-            console.log("Client profile saved successfully")
+            console.log(response.data)
+            console.log("Profile saved successfully")
         })
         .catch(error => {
-            console.log("Failed to save client profile");
+            console.log("Failed to save profile", error);
         })
     };
     return (
         <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
-            <ClientForm
+            {/* <ClientForm
                 profile={profile} 
                 handleChange={handleChange} 
-            />
+            /> */}
+            {isFreelancer ? (
+                <FreelancerForm 
+                    profile={profile}
+                    handleChange={handleChange}
+                    freelancerId={freelancerId}
+                />
+            ) : (
+                <ClientForm 
+                    profile={profile}
+                    handleChange={handleChange}
+                />
+            )
+        }
         </Box>
     );
 };

@@ -63,6 +63,7 @@ function App() {
         <Route path="/signup/client" element={<ClientSignUp />} />
         <Route path="/signup/freelancer" element={<FreelancerSignUp />} />
         <Route path="/client/profile/:clientId" element={<ProfileForm />} />
+        <Route path="/freelancer/profile/:freelancerId" element={<ProfileForm />} />
 
       </Routes>
 
