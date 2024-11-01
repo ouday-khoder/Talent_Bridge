@@ -16,6 +16,7 @@ import OurClient from './components/HomePage/OurClient/OurClient';
 import Footer from './components/Footer/Footer';
 import ClientSignUp from './components/ClientSignUp/ClientSignUp';
 import ProfileForm from './components/SignUp/ProfileForm/ProfileForm';
+import FreelancerSignUp from './components/FreelancerSignUp/FreelancerSignUp';
 
 
 function App() {
@@ -60,6 +61,7 @@ function App() {
         } />
 
         <Route path="/signup/client" element={<ClientSignUp />} />
+        <Route path="/signup/freelancer" element={<FreelancerSignUp />} />
         <Route path="/client/profile/:clientId" element={<ProfileForm />} />
 
       </Routes>

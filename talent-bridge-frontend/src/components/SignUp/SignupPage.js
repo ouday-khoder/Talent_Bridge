@@ -10,6 +10,10 @@ const SignupPage = React.forwardRef((props, ref) => {
         navigate('/signup/client');
     }
 
+    const handleFreelancerSignup = () => {
+        navigate('/signup/freelancer')
+    }
+
     
   return (
     <Box ref={ref} sx={{ textAlign: 'center', padding: '3rem 0', backgroundColor: '#e2e8f033', borderRadius: '50px'}}>
@@ -35,7 +39,7 @@ const SignupPage = React.forwardRef((props, ref) => {
                 <Typography variant="body2">Looking for work</Typography>
                 </CardContent>
                 <CardActions>
-                <Button variant="contained" color="primary">Join as a Freelancer</Button>
+                <Button onClick={handleFreelancerSignup} variant="contained" color="primary">Join as a Freelancer</Button>
                 </CardActions>
             </Card>
             </Grid>
