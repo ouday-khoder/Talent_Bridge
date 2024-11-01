@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Box, TextField, Button, Typography } from '@mui/material';
+import axios from 'axios';
 
 const FreelancerSignUp = () => {
     const [formData, setFormData] = useState({
@@ -16,6 +17,16 @@ const FreelancerSignUp = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        axios.post("http://localhost:8080/api/freelancers", formData)
+        .then(response => {
+            console.log(response.data)
+            console.log("Freelancer created successfully: ", response.data)
+        })
+        .catch(error => {
+            console.error(error);
+            console.error('There was an error creating the freelancer!', error);
+        });
     };
 
     return (
