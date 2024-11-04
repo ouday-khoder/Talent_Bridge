@@ -1,6 +1,7 @@
 package com.ouday.talent_bridge_backend.rest;
 
 import com.ouday.talent_bridge_backend.entity.Freelancer;
+import com.ouday.talent_bridge_backend.entity.Profile;
 import com.ouday.talent_bridge_backend.service.FreelancerServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -37,6 +38,30 @@ public class FreelancerController {
         Freelancer dbFreelancer = freelancerServiceInterface.save(theFreelancer);
 
         return dbFreelancer;
+    }
+
+    @PostMapping("/freelancers/profile/{freelancerId}")
+    public Freelancer ClientProfile(@PathVariable int freelancerId, @RequestBody Profile profile) {
+        Freelancer freelancer = freelancerServiceInterface.findById(freelancerId);
+
+        if(freelancer == null) {
+            throw new RuntimeException("freelancer id not found - " + freelancerId);
+        }
+        // Update freelancer with profile information
+        freelancer.setCountry(profile.getCountry());
+        freelancer.setCity(profile.getCity());
+        freelancer.setStreet(profile.getStreet());
+        freelancer.setPostCode(profile.getPostCode());
+        freelancer.setDateOfBirth(profile.getDateOfBirth());
+        freelancer.setGender(profile.getGender());
+        freelancer.setJobTitle(profile.getJobTitle());
+        freelancer.setPhoneNumber(profile.getPhoneNumber());
+        freelancer.setBio(profile.getBio());
+        freelancer.setHourlyRate(profile.getHourlyRate());
+
+        freelancerServiceInterface.save(freelancer);
+
+        return freelancer;
     }
 
 

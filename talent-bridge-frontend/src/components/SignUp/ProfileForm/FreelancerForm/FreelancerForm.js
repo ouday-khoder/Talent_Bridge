@@ -27,12 +27,18 @@ import ArticleStep from './ArticleStep/ArticleStep';
     </Box>
 );
 
-const FreelancerForm = ({ profile, handleChange, freelancerId }) => {
+const FreelancerForm = ({ profile, handleChange, freelancerId, activeComponent, setActiveComponent, handleProfileSaved }) => {
+
+
+    const handleComponentChange = (label) => {
+        setActiveComponent(label);  // Correctly change the active component based on the clicked circle
+    };
+
 
     const renderComponent = () => {
-        switch ("Profile") {
+        switch (activeComponent) {
             case 'Profile' : 
-                return <ProfileStep  freelancerId={freelancerId} profile={profile} handleChange={handleChange}/>;
+                return <ProfileStep  freelancerId={freelancerId} profile={profile} handleChange={handleChange}  handleProfileSaved={handleProfileSaved}/>;
             case 'Skills' : 
                 return <SkillStep />
             case 'Education' : 
@@ -55,6 +61,8 @@ const FreelancerForm = ({ profile, handleChange, freelancerId }) => {
                         <CircleButton
                             key={label}
                             label={label}
+                            onClick={handleComponentChange}
+                            isActive={activeComponent === label}
                         />
                     ))}
                 </Box>

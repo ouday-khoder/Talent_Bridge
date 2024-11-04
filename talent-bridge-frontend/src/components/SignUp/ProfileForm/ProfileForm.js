@@ -18,11 +18,23 @@ const ProfileForm = () => {
         phoneNumber: '', bio: '', hourlyRate: '',
     });
 
+    const [activeComponent, setActiveComponent] = useState('Profile');
+
+
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setProfile({ ...profile, [name]: value });
     };
+
+    const handleProfileSaved = () => {
+        const sections = ['Profile', 'Skills', 'Education', 'Certification', 'Article'];
+        const currentIndex = sections.indexOf(activeComponent);
+
+        if(currentIndex < sections.length - 1) {
+            setActiveComponent(sections[currentIndex + 1]);
+        }
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -37,6 +49,7 @@ const ProfileForm = () => {
         .then(response => {
             console.log(response.data)
             console.log("Profile saved successfully")
+            handleProfileSaved();
         })
         .catch(error => {
             console.log("Failed to save profile", error);
@@ -44,15 +57,14 @@ const ProfileForm = () => {
     };
     return (
         <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
-            {/* <ClientForm
-                profile={profile} 
-                handleChange={handleChange} 
-            /> */}
             {isFreelancer ? (
                 <FreelancerForm 
                     profile={profile}
                     handleChange={handleChange}
                     freelancerId={freelancerId}
+                    activeComponent={activeComponent}
+                    setActiveComponent={setActiveComponent}
+                    handleProfileSaved={handleProfileSaved}
                 />
             ) : (
                 <ClientForm 
