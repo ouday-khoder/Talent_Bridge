@@ -47,6 +47,16 @@ public class FreelancerServiceImpl implements FreelancerServiceInterface {
         return theFreelancer;
     }
 
+    @Override
+    public void deleteById(int theId) {
+        freelancerRepository.deleteById(theId);
+    }
+
+    @Override
+    public void deleteAll() {
+        freelancerRepository.deleteAll();
+    }
+
     // skill code
 
     @Override

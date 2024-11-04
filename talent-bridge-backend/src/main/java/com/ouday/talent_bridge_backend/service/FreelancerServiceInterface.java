@@ -12,6 +12,10 @@ public interface FreelancerServiceInterface {
     Freelancer findById(int theId);
     Freelancer save(Freelancer theFreelancer);
 
+    void deleteById(int theId);
+
+    void deleteAll();
+
 
     // method to add skill to a freelancer
     Skill addSkill(Skill skill);

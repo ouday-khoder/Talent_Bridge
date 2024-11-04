@@ -64,6 +64,35 @@ public class FreelancerController {
         return freelancer;
     }
 
+    @PutMapping("/freelancers")
+    public Freelancer updateFreelancer(@RequestBody Freelancer theFreelancer) {
+        Freelancer dbFreelancer = freelancerServiceInterface.save(theFreelancer);
+
+        return dbFreelancer;
+    }
+
+    @DeleteMapping("/freelancers/{freelancerId}")
+    public String deleteFreelancerById(@PathVariable int freelancerId) {
+        Freelancer tempFreelancer = freelancerServiceInterface.findById(freelancerId);
+
+        if(tempFreelancer == null) {
+            throw new RuntimeException("freelancer id not found - " + freelancerId);
+        }
+
+        freelancerServiceInterface.deleteById(freelancerId);
+
+        return "deleted freelancer id - " + freelancerId;
+    }
+
+
+    @DeleteMapping("/freelancers")
+    public String deleteAll() {
+        freelancerServiceInterface.deleteAll();
+
+        return "All freelancers are deleted";
+    }
+
+
 
 
 }
