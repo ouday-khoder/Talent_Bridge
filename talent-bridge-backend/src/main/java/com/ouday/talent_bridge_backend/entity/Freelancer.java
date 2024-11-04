@@ -203,4 +203,30 @@ public class Freelancer {
         this.hourlyRate = hourlyRate;
     }
 
+    // skill field
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(
+        name = "freelancer_skills",
+        joinColumns =@JoinColumn(name = "freelancer_id"),
+        inverseJoinColumns =@JoinColumn(name = "skill_id"))
+
+    private List<Skill> skills = new ArrayList<>();
+
+    // Getter and setter for skills
+    public List<Skill> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(List<Skill> skills) {
+        this.skills = skills;
+    }
+
+    // Add a method to add a skill
+    public void addSkill(Skill skill) {
+        if (skills == null) {
+            skills = new ArrayList<>();
+        }
+        skills.add(skill);
+    }
+
 }

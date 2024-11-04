@@ -1,4 +1,5 @@
 import { Box, Button, FormControl, InputLabel, MenuItem, Select, Typography } from '@mui/material';
+import axios from 'axios';
 import React, { useState } from 'react'
 
 const skillOption = [
@@ -11,12 +12,26 @@ const skillOption = [
   'HTML'
 ]
 
-const SkillStep = () => {
+const SkillStep = ({freelancerId, handleProfileSaved}) => {
 
   const [selectedSkills, setSelectedSkills] = useState([]);
 
   const handleChange = (e) => {
     setSelectedSkills(e.target.value)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    axios.post(`http://localhost:8080/api/freelancers/${freelancerId}/skills`, selectedSkills)
+    .then(response => {
+      console.log("Skills saved successfully");
+      console.log(response.data);
+      handleProfileSaved();
+    })
+    .catch(error => {
+      console.error("Error saving skills", error);
+    });
   }
 
 
@@ -44,7 +59,7 @@ const SkillStep = () => {
         </Select>
       </FormControl>
 
-      <Button variant="contained" color="primary">
+      <Button onClick={handleSubmit} variant="contained" color="primary">
         Save
       </Button>
     </Box>
