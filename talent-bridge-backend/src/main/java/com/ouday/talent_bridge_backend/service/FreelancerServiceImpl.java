@@ -1,8 +1,10 @@
 package com.ouday.talent_bridge_backend.service;
 
+import com.ouday.talent_bridge_backend.entity.Certification;
 import com.ouday.talent_bridge_backend.entity.Education;
 import com.ouday.talent_bridge_backend.entity.Freelancer;
 import com.ouday.talent_bridge_backend.entity.Skill;
+import com.ouday.talent_bridge_backend.repository.CertificationRepository;
 import com.ouday.talent_bridge_backend.repository.EducationRepository;
 import com.ouday.talent_bridge_backend.repository.FreelancerRepository;
 import com.ouday.talent_bridge_backend.repository.SkillRepository;
@@ -23,6 +25,9 @@ public class FreelancerServiceImpl implements FreelancerServiceInterface {
 
     @Autowired
     private EducationRepository educationRepository;
+
+    @Autowired
+    private CertificationRepository certificationRepository;
 
     @Autowired
     public FreelancerServiceImpl(FreelancerRepository theFreelancerRepository) {
@@ -111,6 +116,25 @@ public class FreelancerServiceImpl implements FreelancerServiceInterface {
         educationRepository.save(education);
         freelancerRepository.save(freelancer);
         return freelancer;
+    }
+
+
+    // certification code
+
+    @Override
+    public Certification addCertification(Certification certification) {
+        return certificationRepository.save(certification);
+    }
+
+    @Override
+    public Freelancer addCertificationToFreelancer(int freelancerId, Certification certification) {
+        Freelancer freelancer = freelancerRepository.findById(freelancerId)
+                .orElseThrow(() -> new RuntimeException("Freelancer not found"));
+
+        freelancer.getCertificationList().add(certification);
+        certificationRepository.save(certification);
+        freelancerRepository.save(freelancer);
+        return  freelancer;
     }
 
 

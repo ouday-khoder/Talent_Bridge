@@ -18,6 +18,7 @@ import ClientSignUp from './components/ClientSignUp/ClientSignUp';
 import ProfileForm from './components/SignUp/ProfileForm/ProfileForm';
 import FreelancerSignUp from './components/FreelancerSignUp/FreelancerSignUp';
 import EducationForm from './components/SignUp/ProfileForm/FreelancerForm/EducationStep/EducationForm';
+import CertificationForm from './components/SignUp/ProfileForm/FreelancerForm/CertificationStep/CertificationForm';
 
 
 function App() {
@@ -69,6 +70,7 @@ function App() {
 
 
         <Route path="/educationForm" element={<EducationForm />} />
+        <Route path="/certificationForm" element={<CertificationForm />} />
 
       </Routes>
 

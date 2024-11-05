@@ -31,7 +31,7 @@ const FreelancerForm = ({ profile, handleChange, freelancerId, activeComponent, 
 
 
     const handleComponentChange = (label) => {
-        setActiveComponent(label);  // Correctly change the active component based on the clicked circle
+        setActiveComponent(label);
     };
 
 
@@ -44,7 +44,7 @@ const FreelancerForm = ({ profile, handleChange, freelancerId, activeComponent, 
             case 'Education' : 
                 return <EducationStep freelancerId={freelancerId} handleProfileSaved={handleProfileSaved} />
             case 'Certification' : 
-                return <CertificationStep />
+                return <CertificationStep freelancerId={freelancerId} handleProfileSaved={handleProfileSaved} />
             case 'Article' : 
                 return <ArticleStep />
             default: 

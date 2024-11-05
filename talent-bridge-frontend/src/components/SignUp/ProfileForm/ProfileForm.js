@@ -48,11 +48,10 @@ const ProfileForm = () => {
         axios.post(url, profile)
         .then(response => {
             console.log(response.data)
-            console.log("Profile saved successfully")
             handleProfileSaved();
         })
         .catch(error => {
-            console.log("Failed to save profile", error);
+            console.log("Failed to save", error);
         })
     };
     return (

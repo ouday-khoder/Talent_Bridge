@@ -252,4 +252,24 @@ public class Freelancer {
         education.setFreelancer(this);
     }
 
+    //certification field
+    @OneToMany(mappedBy = "freelancer", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<Certification> certificationList = new ArrayList<>();
+
+    public List<Certification> getCertificationList() {
+        return certificationList;
+    }
+    public void setCertificationList(List<Certification> certificationList) {
+        this.certificationList = certificationList;
+    }
+
+    public void addCertification(Certification certification) {
+        if(certificationList == null) {
+            certificationList = new ArrayList<>();
+        }
+        certificationList.add(certification);
+        certification.setFreelancer(this);
+    }
+
 }
