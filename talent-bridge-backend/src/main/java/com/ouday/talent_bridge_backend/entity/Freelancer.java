@@ -1,5 +1,6 @@
 package com.ouday.talent_bridge_backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -227,6 +228,28 @@ public class Freelancer {
             skills = new ArrayList<>();
         }
         skills.add(skill);
+    }
+
+    // eduaction field
+
+    @OneToMany(mappedBy = "freelancer", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<Education> educationList = new ArrayList<>();
+
+    public List<Education> getEducationList() {
+        return educationList;
+    }
+
+    public void setEducationList(List<Education> educationList) {
+        this.educationList = educationList;
+    }
+
+    public void addEducation(Education education) {
+        if (educationList == null) {
+            educationList = new ArrayList<>();
+        }
+        educationList.add(education);
+        education.setFreelancer(this);
     }
 
 }

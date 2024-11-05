@@ -1,7 +1,9 @@
 package com.ouday.talent_bridge_backend.service;
 
+import com.ouday.talent_bridge_backend.entity.Education;
 import com.ouday.talent_bridge_backend.entity.Freelancer;
 import com.ouday.talent_bridge_backend.entity.Skill;
+import com.ouday.talent_bridge_backend.repository.EducationRepository;
 import com.ouday.talent_bridge_backend.repository.FreelancerRepository;
 import com.ouday.talent_bridge_backend.repository.SkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ public class FreelancerServiceImpl implements FreelancerServiceInterface {
 
     @Autowired
     private SkillRepository skillRepository;
+
+    @Autowired
+    private EducationRepository educationRepository;
 
     @Autowired
     public FreelancerServiceImpl(FreelancerRepository theFreelancerRepository) {
@@ -64,14 +69,10 @@ public class FreelancerServiceImpl implements FreelancerServiceInterface {
         return skillRepository.save(skill);
     }
 
-    // New method to add skill to a freelancer
+    // add skill to a freelancer
     public Freelancer addSkillToFreelancer(int freelancerId, Skill skill) {
         Freelancer freelancer = freelancerRepository.findById(freelancerId)
                 .orElseThrow(() -> new RuntimeException("Freelancer not found"));
-
-        // Check skill before adding
-        System.out.println("Skill before adding: " + skill.getName());
-
 
         freelancer.getSkills().add(skill);
         skillRepository.save(skill);  // Save the skill entity
@@ -91,8 +92,27 @@ public class FreelancerServiceImpl implements FreelancerServiceInterface {
                 .orElseThrow(() -> new RuntimeException("Skill not found with ID - " + skillId));
 
         freelancer.getSkills().remove(skillToRemove);
-        freelancerRepository.save(freelancer);  // Save the updated freelancer
+        freelancerRepository.save(freelancer);
     }
+
+    // education code
+
+    @Override
+    public Education addEducation(Education education) {
+        return educationRepository.save(education);
+    }
+
+    @Override
+    public Freelancer addEducationToFreelancer(int freelancerId, Education education) {
+        Freelancer freelancer = freelancerRepository.findById(freelancerId)
+                .orElseThrow(() -> new RuntimeException("Freelancer not found"));
+
+        freelancer.getEducationList().add(education);
+        educationRepository.save(education);
+        freelancerRepository.save(freelancer);
+        return freelancer;
+    }
+
 
 
 }

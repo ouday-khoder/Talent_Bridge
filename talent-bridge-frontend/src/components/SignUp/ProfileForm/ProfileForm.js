@@ -15,7 +15,7 @@ const ProfileForm = () => {
     const [profile, setProfile] = useState({
         country: '', city: '', street: '', postCode: '', 
         dateOfBirth: '', gender: '', jobTitle: '', 
-        phoneNumber: '', bio: '', hourlyRate: '',
+        phoneNumber: '', bio: '', hourlyRate: '',   
     });
 
     const [activeComponent, setActiveComponent] = useState('Profile');

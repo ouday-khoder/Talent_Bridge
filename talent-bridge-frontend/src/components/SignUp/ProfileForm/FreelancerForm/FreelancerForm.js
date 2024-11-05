@@ -42,7 +42,7 @@ const FreelancerForm = ({ profile, handleChange, freelancerId, activeComponent, 
             case 'Skills' : 
                 return <SkillStep freelancerId={freelancerId} handleProfileSaved={handleProfileSaved}/>
             case 'Education' : 
-                return <EducationStep />
+                return <EducationStep freelancerId={freelancerId} handleProfileSaved={handleProfileSaved} />
             case 'Certification' : 
                 return <CertificationStep />
             case 'Article' : 

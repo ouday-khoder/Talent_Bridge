@@ -17,6 +17,7 @@ import Footer from './components/Footer/Footer';
 import ClientSignUp from './components/ClientSignUp/ClientSignUp';
 import ProfileForm from './components/SignUp/ProfileForm/ProfileForm';
 import FreelancerSignUp from './components/FreelancerSignUp/FreelancerSignUp';
+import EducationForm from './components/SignUp/ProfileForm/FreelancerForm/EducationStep/EducationForm';
 
 
 function App() {
@@ -64,6 +65,10 @@ function App() {
         <Route path="/signup/freelancer" element={<FreelancerSignUp />} />
         <Route path="/client/profile/:clientId" element={<ProfileForm />} />
         <Route path="/freelancer/profile/:freelancerId" element={<ProfileForm />} />
+
+
+
+        <Route path="/educationForm" element={<EducationForm />} />
 
       </Routes>
 

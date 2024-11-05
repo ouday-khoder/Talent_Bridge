@@ -1,5 +1,6 @@
 package com.ouday.talent_bridge_backend.service;
 
+import com.ouday.talent_bridge_backend.entity.Education;
 import com.ouday.talent_bridge_backend.entity.Freelancer;
 import com.ouday.talent_bridge_backend.entity.Skill;
 
@@ -25,4 +26,9 @@ public interface FreelancerServiceInterface {
 
     void removeSkillFromFreelancer(int freelancerId, int skillId);
 
+    // method to add education to a freelancer
+
+    Education addEducation(Education education);
+
+    Freelancer addEducationToFreelancer(int freelancerId, Education education);
 }
