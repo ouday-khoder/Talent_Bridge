@@ -46,7 +46,7 @@ const FreelancerForm = ({ profile, handleChange, freelancerId, activeComponent, 
             case 'Certification' : 
                 return <CertificationStep freelancerId={freelancerId} handleProfileSaved={handleProfileSaved} />
             case 'Article' : 
-                return <ArticleStep />
+                return <ArticleStep freelancerId={freelancerId}/>
             default: 
             return null;
             

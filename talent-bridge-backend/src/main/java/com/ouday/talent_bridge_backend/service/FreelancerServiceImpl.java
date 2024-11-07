@@ -1,13 +1,7 @@
 package com.ouday.talent_bridge_backend.service;
 
-import com.ouday.talent_bridge_backend.entity.Certification;
-import com.ouday.talent_bridge_backend.entity.Education;
-import com.ouday.talent_bridge_backend.entity.Freelancer;
-import com.ouday.talent_bridge_backend.entity.Skill;
-import com.ouday.talent_bridge_backend.repository.CertificationRepository;
-import com.ouday.talent_bridge_backend.repository.EducationRepository;
-import com.ouday.talent_bridge_backend.repository.FreelancerRepository;
-import com.ouday.talent_bridge_backend.repository.SkillRepository;
+import com.ouday.talent_bridge_backend.entity.*;
+import com.ouday.talent_bridge_backend.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +22,9 @@ public class FreelancerServiceImpl implements FreelancerServiceInterface {
 
     @Autowired
     private CertificationRepository certificationRepository;
+
+    @Autowired
+    private ArticleRepository articleRepository;
 
     @Autowired
     public FreelancerServiceImpl(FreelancerRepository theFreelancerRepository) {
@@ -133,6 +130,25 @@ public class FreelancerServiceImpl implements FreelancerServiceInterface {
 
         freelancer.getCertificationList().add(certification);
         certificationRepository.save(certification);
+        freelancerRepository.save(freelancer);
+        return  freelancer;
+    }
+
+
+    // article field
+
+    @Override
+    public Article addArticle(Article article) {
+        return articleRepository.save(article);
+    }
+
+    @Override
+    public Freelancer addArticleToFreelancer(int freelancerId, Article article) {
+        Freelancer freelancer = freelancerRepository.findById(freelancerId)
+                .orElseThrow(() -> new RuntimeException("Freelancer not found"));
+
+        freelancer.getArticleList().add(article);
+        articleRepository.save(article);
         freelancerRepository.save(freelancer);
         return  freelancer;
     }

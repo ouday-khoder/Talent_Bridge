@@ -1,9 +1,6 @@
 package com.ouday.talent_bridge_backend.service;
 
-import com.ouday.talent_bridge_backend.entity.Certification;
-import com.ouday.talent_bridge_backend.entity.Education;
-import com.ouday.talent_bridge_backend.entity.Freelancer;
-import com.ouday.talent_bridge_backend.entity.Skill;
+import com.ouday.talent_bridge_backend.entity.*;
 
 import java.util.List;
 
@@ -39,4 +36,12 @@ public interface FreelancerServiceInterface {
     Certification addCertification(Certification certification);
 
     Freelancer addCertificationToFreelancer(int freelancerId, Certification certification);
+
+    // article field
+
+    Article addArticle(Article article);
+
+    Freelancer addArticleToFreelancer(int freelancerId, Article article);
+
+
 }
