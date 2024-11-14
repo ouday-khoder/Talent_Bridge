@@ -19,7 +19,7 @@ import ProfileForm from './components/SignUp/ProfileForm/ProfileForm';
 import FreelancerSignUp from './components/FreelancerSignUp/FreelancerSignUp';
 import EducationForm from './components/SignUp/ProfileForm/FreelancerForm/EducationStep/EducationForm';
 import CertificationForm from './components/SignUp/ProfileForm/FreelancerForm/CertificationStep/CertificationForm';
-
+import SignIn from './components/SignIn/SignIn';
 
 function App() {
   const homeText1 = `Nusoft: Uniting <br> 
@@ -68,6 +68,7 @@ function App() {
         <Route path="/freelancer/profile/:freelancerId" element={<ProfileForm />} />
 
 
+        <Route path="/UserSignIn" element={<SignIn />} />
 
         <Route path="/educationForm" element={<EducationForm />} />
         <Route path="/certificationForm" element={<CertificationForm />} />

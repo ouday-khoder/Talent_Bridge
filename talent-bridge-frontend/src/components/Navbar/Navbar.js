@@ -3,8 +3,15 @@ import { AppBar, Box, Button, Container, Toolbar, Typography } from '@mui/materi
 import nusoftLogo from '../../assets/nusoft.png'
 import NavDrawer from './NavDrawer';
 import { NavLinks } from './NavLinks';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = ({ signupRef }) => {
+
+    const navigate = useNavigate();
+
+    const handleSignIn = () => {
+        navigate("/UserSignIn");
+    }
     
     const handleSignUpScroll = () => {
         if (signupRef.current) {
@@ -30,7 +37,7 @@ const Navbar = ({ signupRef }) => {
                     </Box>
                 </Box>
                 <Box>
-                    <Button
+                    <Button  onClick={handleSignIn} 
                         sx={{
                             color: '#718096', 
                             textTransform: 'capitalize', 

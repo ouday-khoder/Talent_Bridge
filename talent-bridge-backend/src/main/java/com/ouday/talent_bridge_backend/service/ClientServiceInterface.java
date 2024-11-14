@@ -15,4 +15,5 @@ public interface ClientServiceInterface {
     void deleteById(int theId);
 
     void deleteAll();
+
 }
