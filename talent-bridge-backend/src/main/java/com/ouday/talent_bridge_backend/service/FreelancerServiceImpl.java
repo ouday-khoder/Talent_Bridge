@@ -154,5 +154,11 @@ public class FreelancerServiceImpl implements FreelancerServiceInterface {
     }
 
 
+    @Override
+    public Freelancer findByEmail(String email) {
+        return freelancerRepository.findByEmail(email);
+    }
+
+
 
 }

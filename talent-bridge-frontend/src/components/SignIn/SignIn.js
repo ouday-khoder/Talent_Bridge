@@ -1,13 +1,35 @@
 import { Box, Button, TextField, Typography } from '@mui/material'
 import React, { useState } from 'react'
+import UserSignIn from './UserSignIn';
 
 const SignIn = () => {
+    const [error, setError] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const handleSignIn = async (e) => {
+        e.preventDefault();
+
+        const response = await UserSignIn(email, password);
+
+        if (response.success) {
+            localStorage.setItem('userRole', response.role);
+
+            if (response.role === 'client') {
+                console.log("client done")
+            } else if (response.role === 'freelancer') {
+                console.log("freelancer done")
+            }
+        } else {
+            setError(response.message);
+        }
+    };
+
 
   return (
     <Box
     component="form"
+    onSubmit={handleSignIn}
     sx={{
         maxWidth: 400,
         margin: 'auto',
@@ -42,8 +64,14 @@ const SignIn = () => {
         required
         variant="outlined"
     />
+
+        {error && (
+            <Typography color="error" align="center">
+            {error}
+            </Typography>
+        )}
         
-    <Button variant="contained" color="primary" fullWidth>
+    <Button type='submit' variant="contained" color="primary" fullWidth>
         Login
     </Button>
     </Box>

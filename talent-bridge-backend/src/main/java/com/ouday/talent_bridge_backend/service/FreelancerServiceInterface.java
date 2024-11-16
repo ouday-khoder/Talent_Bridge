@@ -44,4 +44,7 @@ public interface FreelancerServiceInterface {
     Freelancer addArticleToFreelancer(int freelancerId, Article article);
 
 
+    // find freelancers by their email
+    Freelancer findByEmail(String email);
+
 }

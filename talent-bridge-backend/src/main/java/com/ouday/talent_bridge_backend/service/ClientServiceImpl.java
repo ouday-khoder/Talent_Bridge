@@ -52,4 +52,11 @@ public class ClientServiceImpl implements ClientServiceInterface {
         clientRepository.deleteAll();
     }
 
+
+    @Override
+    public Client findByEmail(String email) {
+        return clientRepository.findByEmail(email);
+    }
+
+
 }

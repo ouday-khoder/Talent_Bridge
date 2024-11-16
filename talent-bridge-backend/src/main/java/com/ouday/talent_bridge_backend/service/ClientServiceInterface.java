@@ -16,4 +16,6 @@ public interface ClientServiceInterface {
 
     void deleteAll();
 
+    Client findByEmail(String email);
+
 }

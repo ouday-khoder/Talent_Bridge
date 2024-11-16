@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface FreelancerRepository extends JpaRepository<Freelancer, Integer> {
+    Freelancer findByEmail(String email);
 }
