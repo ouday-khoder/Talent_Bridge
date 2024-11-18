@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Button, Grid, Stack, Typography } from '@mui/material'
+import { Button, Grid, Stack, Typography } from '@mui/material'
 import nusoftwhitelogo from '../../assets/nusoft-white.png';
 
 const Footer = () => {

@@ -1,11 +1,13 @@
 import { Box, Button, TextField, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import UserSignIn from './UserSignIn';
+import { useNavigate } from 'react-router-dom';
 
 const SignIn = () => {
     const [error, setError] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     const handleSignIn = async (e) => {
         e.preventDefault();
@@ -17,6 +19,7 @@ const SignIn = () => {
 
             if (response.role === 'client') {
                 console.log("client done")
+                navigate("/client/browse-freelancers")
             } else if (response.role === 'freelancer') {
                 console.log("freelancer done")
             }

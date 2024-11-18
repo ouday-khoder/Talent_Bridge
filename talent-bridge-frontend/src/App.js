@@ -20,6 +20,7 @@ import FreelancerSignUp from './components/FreelancerSignUp/FreelancerSignUp';
 import EducationForm from './components/SignUp/ProfileForm/FreelancerForm/EducationStep/EducationForm';
 import CertificationForm from './components/SignUp/ProfileForm/FreelancerForm/CertificationStep/CertificationForm';
 import SignIn from './components/SignIn/SignIn';
+import BrowseFreelancers from './components/AfterSignIn/ClientNewPage/BrowseFreelancers/BrowseFreelancers';
 
 function App() {
   const homeText1 = `Nusoft: Uniting <br> 
@@ -58,7 +59,6 @@ function App() {
             <Skills />
             <Home text={homeText3} imageSrc={homepage3} variant="hire" />
             <OurClient /> 
-            <Footer />
           </Container>
         } />
 
@@ -70,11 +70,14 @@ function App() {
 
         <Route path="/UserSignIn" element={<SignIn />} />
 
+        {/* client sign in */}
+        <Route path="/client/browse-freelancers" element={<BrowseFreelancers />} />
+
         <Route path="/educationForm" element={<EducationForm />} />
         <Route path="/certificationForm" element={<CertificationForm />} />
 
       </Routes>
-
+      <Footer />
     </>
 
   );
