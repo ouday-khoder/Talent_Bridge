@@ -21,6 +21,7 @@ import EducationForm from './components/SignUp/ProfileForm/FreelancerForm/Educat
 import CertificationForm from './components/SignUp/ProfileForm/FreelancerForm/CertificationStep/CertificationForm';
 import SignIn from './components/SignIn/SignIn';
 import BrowseFreelancers from './components/AfterSignIn/ClientNewPage/BrowseFreelancers/BrowseFreelancers';
+import PostProject from './components/AfterSignIn/ClientNewPage/PostProject/PostProject';
 
 function App() {
   const homeText1 = `Nusoft: Uniting <br> 
@@ -72,6 +73,7 @@ function App() {
 
         {/* client sign in */}
         <Route path="/client/browse-freelancers" element={<BrowseFreelancers />} />
+        <Route path="/client/post-project" element={<PostProject />} />
 
         <Route path="/educationForm" element={<EducationForm />} />
         <Route path="/certificationForm" element={<CertificationForm />} />
