@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import UserNavbar from '../../UserNavbar/UserNavbar';
 import FixedProject from './FixedProject/FixedProject';
 import HourlyProject from './HourlyProject/HourlyProject';
+import axios from 'axios';
 
 const PostProject = () => {
     const [formData, setFormData] = useState({
@@ -26,8 +27,14 @@ const PostProject = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        try {
+            const url = projectType === 'fixed' ? 'fixedProjects' : '';
+            const response = await axios.post(`http://localhost:8080/api/${url}`, formData);
+            console.log("Form submitted successfully:", response.data);
+        } catch (error) {
+            console.error("Error submitting form:", error);
+        }
     };
-
 
     const handleProjectTypeChange = (type) => {
         setProjectType(type); 

@@ -6,7 +6,7 @@ import React from 'react';
     const FixedProject = ({ formData, handleChange, handleSubmit }) => {
     return (
         <Box component="form" onSubmit={handleSubmit} sx={{ maxWidth: '600px', margin: '0 auto' }}>
-        <Typography variant="h5">Fixed Price Project</Typography>
+        <Typography variant="h5">Fixed Project</Typography>
             <TextField
             fullWidth
             label="Name"
