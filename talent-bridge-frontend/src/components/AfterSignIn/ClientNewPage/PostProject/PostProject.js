@@ -28,7 +28,7 @@ const PostProject = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const url = projectType === 'fixed' ? 'fixedProjects' : '';
+            const url = projectType === 'fixed' ? 'fixedProjects' : 'hourlyProjects';
             const response = await axios.post(`http://localhost:8080/api/${url}`, formData);
             console.log("Form submitted successfully:", response.data);
         } catch (error) {
