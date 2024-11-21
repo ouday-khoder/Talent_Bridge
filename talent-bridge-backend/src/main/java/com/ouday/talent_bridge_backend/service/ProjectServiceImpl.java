@@ -1,7 +1,9 @@
 package com.ouday.talent_bridge_backend.service;
 
 import com.ouday.talent_bridge_backend.entity.FixedProject;
+import com.ouday.talent_bridge_backend.entity.HourlyProject;
 import com.ouday.talent_bridge_backend.repository.FixedRepository;
+import com.ouday.talent_bridge_backend.repository.HourlyRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,9 +12,11 @@ import java.util.List;
 public class ProjectServiceImpl implements ProjectServiceInterface {
 
     private final FixedRepository fixedRepository;
+    private final HourlyRepository hourlyRepository;
 
-    public ProjectServiceImpl(FixedRepository fixedRepository) {
+    public ProjectServiceImpl(FixedRepository fixedRepository, HourlyRepository hourlyRepository) {
         this.fixedRepository = fixedRepository;
+        this.hourlyRepository = hourlyRepository;
     }
 
     // Fixed fields
@@ -42,6 +46,35 @@ public class ProjectServiceImpl implements ProjectServiceInterface {
     @Override
     public void deleteAllFixedProjects() {
         fixedRepository.deleteAll();
+    }
+
+    // Hourly fields
+    @Override
+    public HourlyProject saveHourlyProject(HourlyProject hourlyProject) {
+        hourlyProject.setId(0);
+        hourlyProject.setType("hourly");
+        return hourlyRepository.save(hourlyProject);
+    }
+
+    @Override
+    public List<HourlyProject> getAllHourlyProjects() {
+        return hourlyRepository.findAll();
+    }
+
+    @Override
+    public HourlyProject findHourlyProjectById(int theId) {
+        return hourlyRepository.findById(theId).orElseThrow(() ->
+                new RuntimeException("Hourly project id not found"));
+    }
+
+    @Override
+    public void deleteHourlyProjectById(int theId) {
+        hourlyRepository.deleteById(theId);
+    }
+
+    @Override
+    public void deleteAllHourlyProjects() {
+        hourlyRepository.deleteAll();
     }
 
 

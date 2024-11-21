@@ -1,6 +1,7 @@
 package com.ouday.talent_bridge_backend.service;
 
 import com.ouday.talent_bridge_backend.entity.FixedProject;
+import com.ouday.talent_bridge_backend.entity.HourlyProject;
 
 import java.util.List;
 
@@ -22,4 +23,22 @@ public interface ProjectServiceInterface {
 
     // delete all fixedProjects;
     void deleteAllFixedProjects();
+
+
+    // hourly fields
+
+    // Method to save a Hourly Project
+    HourlyProject saveHourlyProject(HourlyProject hourlyProject);
+
+    // Method to retrieve all Hourly Projects
+    List<HourlyProject> getAllHourlyProjects();
+
+    // find hourlyProject by id
+    HourlyProject findHourlyProjectById(int theId);
+
+    // Method to delete a hourly project
+    void deleteHourlyProjectById(int theId);
+
+    // delete all hourlyProjects;
+    void deleteAllHourlyProjects();
 }

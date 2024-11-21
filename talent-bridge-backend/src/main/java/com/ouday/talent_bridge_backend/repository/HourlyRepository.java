@@ -1,0 +1,8 @@
+package com.ouday.talent_bridge_backend.repository;
+
+import com.ouday.talent_bridge_backend.entity.HourlyProject;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface HourlyRepository extends JpaRepository<HourlyProject, Integer> {
+
+}

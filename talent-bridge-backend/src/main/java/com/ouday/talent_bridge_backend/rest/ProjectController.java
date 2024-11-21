@@ -1,6 +1,7 @@
 package com.ouday.talent_bridge_backend.rest;
 
 import com.ouday.talent_bridge_backend.entity.FixedProject;
+import com.ouday.talent_bridge_backend.entity.HourlyProject;
 import com.ouday.talent_bridge_backend.service.ProjectServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -53,6 +54,43 @@ public class ProjectController {
     public String deleteAllFixedProjects() {
         projectServiceInterface.deleteAllFixedProjects();
         return "All fixed projects are deleted";
+    }
+
+    // Hourly fields
+    @GetMapping("/hourlyProjects")
+    public List<HourlyProject> getAllHourlyProjects() {
+        return projectServiceInterface.getAllHourlyProjects();
+    }
+
+    @GetMapping("/hourlyProjects/{hourlyProjectId}")
+    public HourlyProject getHourlyProjectById(@PathVariable int hourlyProjectId) {
+        HourlyProject theHourlyProject = projectServiceInterface.findHourlyProjectById(hourlyProjectId);
+        if (theHourlyProject == null) {
+            throw new RuntimeException("Project id is not found - " + hourlyProjectId);
+        }
+        return theHourlyProject;
+    }
+
+    @PostMapping("/hourlyProjects")
+    public HourlyProject submitHourlyProject(@RequestBody HourlyProject theHourlyProject) {
+        theHourlyProject.setId(0);
+        theHourlyProject.setType("hourly");
+        return projectServiceInterface.saveHourlyProject(theHourlyProject);
+    }
+
+    @DeleteMapping("/hourlyProjects/{hourlyProjectId}")
+    public String deleteHourlyProjectById(@PathVariable int hourlyProjectId) {
+        if (projectServiceInterface.findHourlyProjectById(hourlyProjectId) == null) {
+            throw new RuntimeException("Hourly project not found - " + hourlyProjectId);
+        }
+        projectServiceInterface.deleteHourlyProjectById(hourlyProjectId);
+        return "Deleted hourly project - " + hourlyProjectId;
+    }
+
+    @DeleteMapping("/hourlyProjects")
+    public String deleteAllHourlyProjects() {
+        projectServiceInterface.deleteAllHourlyProjects();
+        return "All hourly projects are deleted";
     }
 
 
