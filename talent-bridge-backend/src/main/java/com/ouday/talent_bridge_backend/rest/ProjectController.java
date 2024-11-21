@@ -99,4 +99,19 @@ public class ProjectController {
         return projectServiceInterface.getAllProjects();
     }
 
+    // method to get project by id and type
+    @GetMapping("/allProjects/{id}/{type}")
+    public Object getAllProjectsById(@PathVariable int id, @PathVariable String type) {
+        if (!type.equalsIgnoreCase("fixed") && !type.equalsIgnoreCase("hourly")) {
+            throw new RuntimeException("Invalid project type specified - " + type);
+        }
+
+        Object project = projectServiceInterface.findProjectByIdAndType(id, type);
+        if (project == null) {
+            throw new RuntimeException("Project id or type not found - " + id + " " + type);
+        }
+        return project;
+    }
+
+
 }

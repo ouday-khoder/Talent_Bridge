@@ -43,4 +43,6 @@ public interface ProjectServiceInterface {
     void deleteAllHourlyProjects();
 
     List<Object> getAllProjects();
+
+    Object findProjectByIdAndType(int id, String type);
 }

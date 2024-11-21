@@ -87,5 +87,27 @@ public class ProjectServiceImpl implements ProjectServiceInterface {
         return allProjects;
     }
 
+    @Override
+    public Object findProjectByIdAndType(int projectId, String projectType) {
+
+        if ("fixed".equalsIgnoreCase(projectType)) {
+            FixedProject fixedProject = findFixedProjectById(projectId);
+
+            if (fixedProject != null) {
+                return fixedProject;
+            }
+        }
+
+        if("hourly".equalsIgnoreCase(projectType)) {
+            HourlyProject hourlyProject = findHourlyProjectById(projectId);
+            if (hourlyProject != null) {
+                return hourlyProject;
+            }
+        }
+
+        // if not found
+        return null;
+    }
+
 
 }
