@@ -4,11 +4,14 @@ import SearchIcon from '@mui/icons-material/Search';
 import UserNavbar from '../../UserNavbar/UserNavbar';
 import axios from 'axios';
 import ResultBox from './ResultBox/ResultBox';
+import { useNavigate } from 'react-router-dom';
 
 
 const BrowseFreelancers = () => {
 
   const [freelancers, setFreelancers] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get("http://localhost:8080/api/freelancers")
@@ -18,6 +21,10 @@ const BrowseFreelancers = () => {
       console.error("Error fetching freelancers", error);
     });
   }, [])
+
+  const handleShowDetails = (id) => {
+    navigate(`/freelancers/${id}`);
+}
 
   return (
     <>
@@ -61,6 +68,7 @@ const BrowseFreelancers = () => {
                     bio={freelancer.bio}
                     country={freelancer.country}
                     hourlyRate={freelancer.hourlyRate}
+                    onViewFreelancerDetails = {() => handleShowDetails(freelancer.id)}
                 />
             </Grid>
             ))}

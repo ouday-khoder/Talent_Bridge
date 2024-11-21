@@ -23,6 +23,7 @@ import SignIn from './components/SignIn/SignIn';
 import BrowseFreelancers from './components/AfterSignIn/ClientNewPage/BrowseFreelancers/BrowseFreelancers';
 import PostProject from './components/AfterSignIn/ClientNewPage/PostProject/PostProject';
 import MyProjects from './components/AfterSignIn/ClientNewPage/MyProjects/MyProjects';
+import FreelancerDetailsPage from './components/AfterSignIn/ClientNewPage/BrowseFreelancers/ResultBox/FreelancerDetailsPage';
 
 function App() {
   const homeText1 = `Nusoft: Uniting <br> 
@@ -76,6 +77,10 @@ function App() {
         <Route path="/client/browse-freelancers" element={<BrowseFreelancers />} />
         <Route path="/client/post-project" element={<PostProject />} />
         <Route path="/client/posted-projects" element={<MyProjects />} />
+
+
+        {/* freelancer details button */}
+        <Route path="/freelancers/:id" element={<FreelancerDetailsPage />} />
 
 
         <Route path="/educationForm" element={<EducationForm />} />

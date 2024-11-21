@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Container, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import UserNavbar from '../../UserNavbar/UserNavbar';
 import FixedProject from './FixedProject/FixedProject';
@@ -43,6 +43,7 @@ const PostProject = () => {
     return (
         <>
         <UserNavbar />
+        <Container maxWidth="lg">
         <Box>
             <Typography variant="h4">Post your Project</Typography>
         
@@ -66,6 +67,7 @@ const PostProject = () => {
             <HourlyProject formData={formData} handleChange={handleChange} handleSubmit={handleSubmit} />
             )}
         </Box>
+        </Container>
         </>
     );
 };

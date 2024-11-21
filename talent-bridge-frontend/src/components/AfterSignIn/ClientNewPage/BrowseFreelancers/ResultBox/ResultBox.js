@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Button, Stack, Typography } from '@mui/material';
 
-const ResultBox = ({fullName, bio, jobTitle, country, hourlyRate }) => {
+const ResultBox = ({fullName, bio, jobTitle, country, hourlyRate, onViewFreelancerDetails }) => {
 
 
   return (
@@ -19,7 +19,7 @@ const ResultBox = ({fullName, bio, jobTitle, country, hourlyRate }) => {
         <Typography variant="body2">${hourlyRate} / hr</Typography>
       </Stack>
 
-      <Button >view details</Button>
+      <Button onClick={onViewFreelancerDetails}>view details</Button>
     </Box>
   );
 };
