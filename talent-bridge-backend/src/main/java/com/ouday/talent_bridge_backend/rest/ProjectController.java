@@ -93,5 +93,10 @@ public class ProjectController {
         return "All hourly projects are deleted";
     }
 
+    // method to get all projects(fixed and hourly)
+    @GetMapping("/allProjects")
+    public List<Object> getAllProjects() {
+        return projectServiceInterface.getAllProjects();
+    }
 
 }

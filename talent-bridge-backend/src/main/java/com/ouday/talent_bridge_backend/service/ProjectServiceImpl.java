@@ -6,6 +6,7 @@ import com.ouday.talent_bridge_backend.repository.FixedRepository;
 import com.ouday.talent_bridge_backend.repository.HourlyRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -75,6 +76,15 @@ public class ProjectServiceImpl implements ProjectServiceInterface {
     @Override
     public void deleteAllHourlyProjects() {
         hourlyRepository.deleteAll();
+    }
+
+    // Get all projects
+    public List<Object> getAllProjects() {
+        List<Object> allProjects = new ArrayList<>();
+        allProjects.addAll(getAllFixedProjects());
+        allProjects.addAll(getAllHourlyProjects());
+
+        return allProjects;
     }
 
 

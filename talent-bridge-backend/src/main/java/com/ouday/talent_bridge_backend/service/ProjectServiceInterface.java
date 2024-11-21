@@ -41,4 +41,6 @@ public interface ProjectServiceInterface {
 
     // delete all hourlyProjects;
     void deleteAllHourlyProjects();
+
+    List<Object> getAllProjects();
 }
