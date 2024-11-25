@@ -19,7 +19,7 @@ const UserNavbar = () => {
     }, [location.pathname]);
 
 
-    
+
     const clientLinkItems = [
         {id: 1, name: 'Browse Freelancers', link: '/client/browse-freelancers' },
         {id: 2, name: 'Post Project', link: '/client/post-project' },
@@ -29,8 +29,17 @@ const UserNavbar = () => {
         {id: 6, name: 'Contact Us', link: '/client/contact-us' },
     ];
 
+    const freelancerLinkItems = [
+        {id: 1, name: 'Browse Projects', link: '/freelancer/browse-projects' },
+        {id: 2, name: 'My Projects', link: '/freelancer/my-projects' },
+        {id: 3, name: 'Messages', link: '/messages' },
+        {id: 4, name: 'Pricing', link: '/pricing' },
+        {id: 5, name: 'Contact Us', link: '/contact-us' },
+    ];
 
-    const linkItems = userRole === 'client' ? clientLinkItems : null;
+
+
+    const linkItems = userRole === 'client' ? clientLinkItems : freelancerLinkItems;
 
     return (
         <AppBar position='static' color='transparent' elevation={0}>

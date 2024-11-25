@@ -22,6 +22,7 @@ const SignIn = () => {
                 navigate("/client/browse-freelancers")
             } else if (response.role === 'freelancer') {
                 console.log("freelancer done")
+                navigate('/freelancer/browse-projects')
             }
         } else {
             setError(response.message);

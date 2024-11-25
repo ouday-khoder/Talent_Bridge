@@ -24,6 +24,7 @@ import BrowseFreelancers from './components/AfterSignIn/ClientNewPage/BrowseFree
 import PostProject from './components/AfterSignIn/ClientNewPage/PostProject/PostProject';
 import MyProjects from './components/AfterSignIn/ClientNewPage/MyProjects/MyProjects';
 import FreelancerDetailsPage from './components/AfterSignIn/ClientNewPage/BrowseFreelancers/ResultBox/FreelancerDetailsPage';
+import BrowseProjects from './components/AfterSignIn/FreelancerNewPage/BrowseProjects/BrowseProjects';
 
 function App() {
   const homeText1 = `Nusoft: Uniting <br> 
@@ -82,6 +83,8 @@ function App() {
         {/* freelancer details button */}
         <Route path="/freelancers/:id" element={<FreelancerDetailsPage />} />
 
+        {/* freelancer sign in */}
+        <Route path="/freelancer/browse-projects" element={<BrowseProjects />} />
 
         <Route path="/educationForm" element={<EducationForm />} />
         <Route path="/certificationForm" element={<CertificationForm />} />
