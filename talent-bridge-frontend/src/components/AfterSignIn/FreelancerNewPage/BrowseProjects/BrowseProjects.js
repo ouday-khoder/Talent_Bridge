@@ -4,12 +4,18 @@ import SearchIcon from '@mui/icons-material/Search';
 import UserNavbar from '../../UserNavbar/UserNavbar';
 import axios from 'axios';
 import ProjectBox from './ProjectBox/ProjectBox';
-
+import { useNavigate } from 'react-router-dom';
 
 const BrowseProjects = () => {
-
-    
     const [projects, setProjects] = useState([]);
+
+    const navigate = useNavigate();
+
+    const handleShowProjectDetails = (id, type) => {
+        console.log('Navigating to project details for project ID:', id, 'Type:', type);
+
+        navigate(`/freelancer/projects/${id}/${type}`)
+    }
 
     useEffect(() => {
         const fetchAllProjects = async () => {
@@ -73,6 +79,7 @@ const BrowseProjects = () => {
                     resourceNumber={proj.resourceNumber}
                     description={proj.description}
                     requiredSkills={proj.requiredSkills}
+                    onViewProjectDetails = {() => handleShowProjectDetails(proj.id, proj.type)}
                 />
             </Grid>
         );

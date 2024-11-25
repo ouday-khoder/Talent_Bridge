@@ -1,9 +1,9 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
 
-const HourlyProjectBox = ({ type, name, description, startDate, duration, budget, resourceNumber, requiredSkills }) => {
+const HourlyProjectBox = ({ type, name, description, startDate, duration, budget, resourceNumber, requiredSkills, onViewProjectDetails }) => {
   return (
-    <Box>
+    <Box onClick={onViewProjectDetails}>
       <Typography variant="h6">Type: {type}</Typography>
       <Typography variant="body2">Name: {name}</Typography>
       <Typography variant="body2">Start Date: {startDate}</Typography>

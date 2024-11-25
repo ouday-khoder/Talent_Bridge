@@ -12,7 +12,8 @@ const ProjectBox = ({
   duration,
   startDate,
   resourceNumber,
-  dueDate
+  dueDate,
+  onViewProjectDetails
 }) => {
   
   return (
@@ -40,6 +41,7 @@ const ProjectBox = ({
           description={description}
           dueDate={dueDate} 
           requiredSkills={requiredSkills}
+          onViewProjectDetails={onViewProjectDetails}
         />
       ) : (
         <HourlyProjectBox
@@ -51,6 +53,7 @@ const ProjectBox = ({
           budget={budget} 
           resourceNumber={resourceNumber} 
           requiredSkills={requiredSkills}
+          onViewProjectDetails={onViewProjectDetails}
         />
       )}
     </Box>

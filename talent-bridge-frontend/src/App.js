@@ -25,6 +25,7 @@ import PostProject from './components/AfterSignIn/ClientNewPage/PostProject/Post
 import MyProjects from './components/AfterSignIn/ClientNewPage/MyProjects/MyProjects';
 import FreelancerDetailsPage from './components/AfterSignIn/ClientNewPage/BrowseFreelancers/ResultBox/FreelancerDetailsPage';
 import BrowseProjects from './components/AfterSignIn/FreelancerNewPage/BrowseProjects/BrowseProjects';
+import ProjectDetailsPage from './components/AfterSignIn/FreelancerNewPage/BrowseProjects/ProjectDetailsPage/ProjectDetailsPage';
 
 function App() {
   const homeText1 = `Nusoft: Uniting <br> 
@@ -85,6 +86,9 @@ function App() {
 
         {/* freelancer sign in */}
         <Route path="/freelancer/browse-projects" element={<BrowseProjects />} />
+        <Route path="/freelancer/projects/:id/:type" element={<ProjectDetailsPage />} />
+
+        
 
         <Route path="/educationForm" element={<EducationForm />} />
         <Route path="/certificationForm" element={<CertificationForm />} />
