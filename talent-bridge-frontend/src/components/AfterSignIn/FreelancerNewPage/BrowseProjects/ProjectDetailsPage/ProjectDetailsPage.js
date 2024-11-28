@@ -1,13 +1,15 @@
 
 import React, { useEffect, useState } from 'react';
 import { Box, Button, Container, Stack, Typography } from '@mui/material';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import UserNavbar from '../../../UserNavbar/UserNavbar';
 
 const ProjectDetailsPage = () => {
     const [projects, setProjects] = useState(null);
     const { id, type } = useParams();
+
+    const navigate = useNavigate();
     
     useEffect(() => {
         const fetchProjects = async () => {
@@ -25,6 +27,10 @@ const ProjectDetailsPage = () => {
 
     if (!projects) {
         return <Typography>Loading...</Typography>; 
+    }
+    
+    const handleButtonClick = () => {
+        navigate(`/projects/${id}/${type}/bid-apply`)
     }
 
     return (
@@ -46,7 +52,7 @@ const ProjectDetailsPage = () => {
                                 <Typography variant="body2">Proposals: 0</Typography>
                                 <Typography variant="body2">Member since: {projects.dueDate}</Typography>
                             </Box>
-                            <Button variant="contained" color="primary" sx={{ marginTop: '10px' }}>
+                            <Button onClick={handleButtonClick} variant="contained" color="primary" sx={{ marginTop: '10px' }}>
                                 Bid
                             </Button>
                         </>
@@ -63,7 +69,7 @@ const ProjectDetailsPage = () => {
                                 <Typography variant="body2">Proposals: 0</Typography>
                                 <Typography variant="body2">Member since: {projects.startDate}</Typography>
                             </Box>
-                            <Button variant="contained" color="secondary" sx={{ marginTop: '10px' }}>
+                            <Button onClick={handleButtonClick} variant="contained" color="secondary" sx={{ marginTop: '10px' }}>
                                 Apply
                             </Button>
                         </>
