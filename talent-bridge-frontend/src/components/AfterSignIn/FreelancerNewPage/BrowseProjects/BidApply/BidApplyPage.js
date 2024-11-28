@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Box, Button, Container, TextField, Typography } from '@mui/material';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import UserNavbar from '../../../UserNavbar/UserNavbar';
+import axios from 'axios';
 
 const BidApplyPage = () => {
     const { type } = useParams(); 
+    const navigate = useNavigate();
 
     const [bidProjects, setBidProjects] = useState({
         deliveryDate: '',
@@ -30,6 +32,18 @@ const BidApplyPage = () => {
                 ...applyProjects,
                 [name]: value,
             });
+        }
+    };
+    const handleSubmit = async () => {
+        try {
+            const projectData = type === 'fixed' ? bidProjects : applyProjects;
+            const response = await axios.post(`http://localhost:8080/api/${type === 'fixed' ? 'bidProjects' : 'applyProjects'}`, projectData);
+            console.log(`${type === 'fixed' ? 'Bid' : 'Apply'} project posted!`, response.data);
+            navigate("/freelancer/browse-projects")
+            
+
+        } catch (error) {
+            console.error("Error posting project:", error);
         }
     };
 
@@ -76,6 +90,7 @@ const BidApplyPage = () => {
                             variant="contained"
                             color="primary"
                             sx={{ backgroundColor: '#ff4545', fontWeight: 'bold' }}
+                            onClick={handleSubmit}
                         >
                             Bid
                         </Button>
@@ -108,6 +123,7 @@ const BidApplyPage = () => {
                             variant="contained"
                             color="primary"
                             sx={{ backgroundColor: '#ff4545', fontWeight: 'bold' }}
+                            onClick={handleSubmit}
                         >
                             Apply
                         </Button>
